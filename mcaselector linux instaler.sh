@@ -35,9 +35,11 @@ echo "Name=MCA Selector" >> ${HOME}/.local/share/applications/mcaselector.deskto
 echo "Comment=A tool to select chunks from Minecraft worlds for deletion or export." >> ${HOME}/.local/share/applications/mcaselector.desktop
 echo "Type=Application" >> ${HOME}/.local/share/applications/mcaselector.desktop
 echo "Terminal=false" >> ${HOME}/.local/share/applications/mcaselector.desktop
-echo "Exec= sh \${HOME}/.local/share/mcaselector/start.sh" >> ${HOME}/.local/share/applications/mcaselector.desktop
+#Auto-updater
+#echo "Exec= sh ${HOME}/.local/share/mcaselector/start.sh" >> ${HOME}/.local/share/applications/mcaselector.desktop
+echo "Exec= ${HOME}/.local/share/mcaselector/jre/bin/java -jar ${HOME}/.local/share/mcaselector/mcaselector.jar" >> ${HOME}/.local/share/applications/mcaselector.desktop
 echo "StartupNotify=true" >> ${HOME}/.local/share/applications/mcaselector.desktop
-echo "Icon=\${HOME}/.local/share/mcaselector/icon.bmp" >> ${HOME}/.local/share/applications/mcaselector.desktop
+echo "Icon=${HOME}/.local/share/mcaselector/icon.bmp" >> ${HOME}/.local/share/applications/mcaselector.desktop
 echo "Categories=Game;ActionGame;AdventureGame;Simulation;" >> ${HOME}/.local/share/applications/mcaselector.desktop
 echo "Keywords=game;minecraft;mc;tool;mca;" >> ${HOME}/.local/share/applications/mcaselector.desktop
 echo "StartupWMClass=McaSelector" >> ${HOME}/.local/share/applications/mcaselector.desktop
