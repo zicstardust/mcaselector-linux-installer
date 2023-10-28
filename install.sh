@@ -35,10 +35,12 @@ if [ \${current_version} == \${local_version} ] || [ \${current_version} == \"\"
 else
     notify-send "Download new version...!"
     cd /tmp
-    rm -f \"/tmp/install.sh\"
-    wget https://github.com/zicstardust/mcaselector-linux-installer/blob/main/install.sh
-    sh \"install.sh\"
-    notify-send "New version installed!"
+    curl https://raw.githubusercontent.com/zicstardust/mcaselector-linux-installer/main/install.sh | bash
+    if [ \$? == "0" ]; then
+        notify-send "New version installed!"
+    else
+        notify-send "error, new version not instaled!"
+    fi
 fi
 UPDATESH
 chmod +x ${install_dir}/update.sh
