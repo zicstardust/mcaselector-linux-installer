@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
-install_dir=${HOME}/.local/share/mcaselector
+#check for directory flag
+if [ -n "$1" ]; then
+    install_dir=$1
+else
+    install_dir=${HOME}/.local/share/mcaselector
+fi
+
 jre_version=zulu17.44.53-ca-fx-jre17.0.8.1
 mcaselector_latest_version=$(wget github.com/Querz/mcaselector/releases/latest -q -O - | grep "<title>" | grep -o '[0-9]*[.][0-9]*[.]*[0-9]*\+')
 
@@ -28,14 +34,14 @@ echo ${mcaselector_latest_version} > ${install_dir}/version
 #Create update.sh
 cat > ${install_dir}/update.sh <<UPDATESH
 #!/usr/bin/env bash
+install_dir=\$( cd -- "\$( dirname -- "\${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 current_version=\$(wget github.com/Querz/mcaselector/releases/latest -q -O - | grep "<title>" | grep -o '[0-9]*[.][0-9]*[.]*[0-9]*\+')
-local_version=\$(cat ${install_dir}/version)
+local_version=\$(cat \${install_dir}/version)
 if [ \${current_version} == \${local_version} ] || [ \${current_version} == \"\" ]; then
     notify-send "Latest version installed!"
 else
     notify-send "Download new version...!"
-    cd /tmp
-    curl https://raw.githubusercontent.com/zicstardust/mcaselector-linux-installer/main/install.sh | bash
+    curl https://raw.githubusercontent.com/zicstardust/mcaselector-linux-installer/main/install.sh | bash -s \${install_dir}
     if [ \$? == "0" ]; then
         notify-send "New version installed!"
     else
