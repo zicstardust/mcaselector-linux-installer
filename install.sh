@@ -38,16 +38,18 @@ install_dir=\$( cd -- "\$( dirname -- "\${BASH_SOURCE[0]}" )" &> /dev/null && pw
 current_version=\$(wget github.com/Querz/mcaselector/releases/latest -q -O - | grep "<title>" | grep -o '[0-9]*[.][0-9]*[.]*[0-9]*\+')
 local_version=\$(cat \${install_dir}/version)
 if [ \${current_version} == \${local_version} ] || [ \${current_version} == \"\" ]; then
-    notify-send "Latest version installed!"
+    notify-send -a mcaselector -i \${install_dir}/icon.bmp -t 1 "Latest version installed!"
 else
-    notify-send "Download new version...!"
+    notify-send -a mcaselector -i \${install_dir}/icon.bmp -t 1 "Download new version...!"
     curl https://raw.githubusercontent.com/zicstardust/mcaselector-linux-installer/main/install.sh | bash -s \${install_dir}
     if [ \$? == "0" ]; then
-        notify-send "New version installed!"
+        notify-send -a mcaselector -i \${install_dir}/icon.bmp -t 1 "New version installed!"
     else
-        notify-send "error, new version not instaled!"
+        notify-send -a mcaselector -i \${install_dir}/icon.bmp -t 1 "error, new version not instaled!"
     fi
 fi
+exit 2
+
 UPDATESH
 chmod +x ${install_dir}/update.sh
 
