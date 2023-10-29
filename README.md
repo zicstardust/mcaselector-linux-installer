@@ -1,16 +1,16 @@
 # About
 
-**Script to install [MCASELECTOR](https://github.com/Querz/mcaselectorhttps:/) on any Linux distro with desktop icon and update button**
+**Script to install [MCASELECTOR](https://github.com/Querz/mcaselector) on any Linux distro with desktop icon and update button**
 
 # Install
 
-By default it is installed in: `$HOME/.local/share/mcaselector`
+**By default it is installed in:** `$HOME/.local/share/mcaselector`
 
 ```bash
 curl https://raw.githubusercontent.com/zicstardust/mcaselector-linux-installer/main/install.sh | bash
 ```
 
-For custom directory:
+**For custom directory:**
 
 ```bash
 curl https://raw.githubusercontent.com/zicstardust/mcaselector-linux-installer/main/install.sh | bash -s /path/to/install
@@ -18,4 +18,4 @@ curl https://raw.githubusercontent.com/zicstardust/mcaselector-linux-installer/m
 
 # Update
 
-*desktop icon, right click on "check update"*
+**right click on desktop icon: "check update"**
