@@ -53,7 +53,19 @@ exit 2
 UPDATESH
 chmod +x ${install_dir}/update.sh
 
-#Create .Desktop
+#Create uninstall.sh
+cat > ${install_dir}/uninstall.sh <<UNINSTALLSH
+#!/usr/bin/env bash
+install_dir=\$( cd -- "\$( dirname -- "\${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+rm -Rf \${install_dir}
+rm -f \${HOME}/.local/share/applications/mcaselector.desktop
+notify-send -a mcaselector -t 1 "Mcaselector removed!"
+exit 2
+
+UNINSTALLSH
+chmod +x ${install_dir}/uninstall.sh
+
+#Create mcaselector.desktop
 cat > ${HOME}/.local/share/applications/mcaselector.desktop <<DESKTOPENTRY
 [Desktop Entry]
 version=${mcaselector_latest_version}
@@ -67,10 +79,13 @@ Icon=${install_dir}/icon.bmp
 Categories=Game;ActionGame;AdventureGame;Simulation;
 Keywords=game;minecraft;mc;tool;mca;
 StartupWMClass=McaSelector
-Actions=Configure;
-[Desktop Action Configure]
+Actions=Update;Uninstall;
+[Desktop Action Update]
 Name=Check Update
 Exec=${install_dir}/update.sh
+[Desktop Action Uninstall]
+Name=Uninstall
+Exec=${install_dir}/uninstall.sh
 DESKTOPENTRY
 chmod +x ${HOME}/.local/share/applications/mcaselector.desktop
 
