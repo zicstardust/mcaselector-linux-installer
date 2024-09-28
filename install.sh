@@ -89,5 +89,13 @@ Exec=${install_dir}/uninstall.sh
 DESKTOPENTRY
 chmod +x ${HOME}/.local/share/applications/mcaselector.desktop
 
+#Create mcaselector command
+mkdir -p ${HOME}/.local/bin
+cat > ${HOME}/.local/bin/mcaselector <<BIN
+#!/bin/sh
+${install_dir}/jre/bin/java -jar ${install_dir}/mcaselector.jar
+BIN
+chmod +x ${HOME}/.local/bin/mcaselector
+
 echo ""
 echo "mcaselector ${mcaselector_latest_version} installed!"
