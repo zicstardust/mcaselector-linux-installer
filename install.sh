@@ -59,6 +59,7 @@ cat > ${install_dir}/uninstall.sh <<UNINSTALLSH
 install_dir=\$( cd -- "\$( dirname -- "\${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 rm -Rf \${install_dir}
 rm -f \${HOME}/.local/share/applications/mcaselector.desktop
+rm -f \${HOME}/.local/bin/mcaselector
 notify-send -a mcaselector -t 1 "Mcaselector removed!"
 exit 2
 
