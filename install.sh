@@ -6,7 +6,7 @@ else
     install_dir=${HOME}/.local/share/mcaselector
 fi
 
-jre_version=zulu21.36.17-ca-fx-jre21.0.4
+jre_version=zulu21.40.17-ca-fx-jre21.0.6
 mcaselector_latest_version=$(wget github.com/Querz/mcaselector/releases/latest -q -O - | grep "<title>" | grep -o '[0-9]*[.][0-9]*[.]*[0-9]*\+')
 
 mkdir -p ${install_dir}
