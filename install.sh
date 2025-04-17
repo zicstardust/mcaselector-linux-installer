@@ -74,7 +74,8 @@ Name=MCA Selector
 Comment=A tool to select chunks from Minecraft worlds for deletion or export.
 Type=Application
 Terminal=false
-Exec=${install_dir}/jre/bin/java -jar ${install_dir}/mcaselector.jar
+#Exec=${install_dir}/jre/bin/java -jar ${install_dir}/mcaselector.jar
+Exec=${HOME}/.local/bin/mcaselector
 StartupNotify=true
 Icon=${install_dir}/icon.bmp
 Categories=Game;ActionGame;AdventureGame;Simulation;
@@ -93,8 +94,17 @@ chmod +x ${HOME}/.local/share/applications/mcaselector.desktop
 #Create mcaselector command
 mkdir -p ${HOME}/.local/bin
 cat > ${HOME}/.local/bin/mcaselector <<BIN
-#!/bin/sh
-${install_dir}/jre/bin/java -jar ${install_dir}/mcaselector.jar
+#!/usr/bin/env bash
+if [ "\$1" == "--update" ]; then
+    ${install_dir}/update.sh
+elif [ "\$1" == "--uninstall" ]; then
+	${install_dir}/uninstall.sh
+elif [ -z "\$1" ]; then
+	${install_dir}/jre/bin/java -jar ${install_dir}/mcaselector.jar
+else
+    echo "parameter \$1 unknown"
+    exit 1
+fi
 BIN
 chmod +x ${HOME}/.local/bin/mcaselector
 
