@@ -18,4 +18,21 @@ curl https://raw.githubusercontent.com/zicstardust/mcaselector-linux-installer/m
 
 # Update
 
+```bash
+mcaselector --update
+```
+
+Or
+
 **right click on desktop icon: "check update"**
+
+
+# Uninstall
+
+```bash
+mcaselector --uninstall
+```
+
+Or
+
+**right click on desktop icon: "Uninstall"**
