@@ -74,7 +74,6 @@ Name=MCA Selector
 Comment=A tool to select chunks from Minecraft worlds for deletion or export.
 Type=Application
 Terminal=false
-#Exec=${install_dir}/jre/bin/java -jar ${install_dir}/mcaselector.jar
 Exec=${HOME}/.local/bin/mcaselector
 StartupNotify=true
 Icon=${install_dir}/icon.bmp
